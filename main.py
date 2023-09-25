@@ -18,6 +18,7 @@ def count_elements(elements: list[list[str, int]]) -> list[list[str, int, int]]:
 
     for element in elements:
         elements_dict[element] += 1
+
     result = [list(element) + [count] for element, count in elements_dict.items()]
 
     return result
@@ -26,6 +27,7 @@ def count_elements(elements: list[list[str, int]]) -> list[list[str, int, int]]:
 def search(tree, key):
     if key in tree:
         return tree[key]
+
     for value in tree.values():
         if isinstance(value, dict):
             tree = value
@@ -34,12 +36,13 @@ def search(tree, key):
 
 def json_diff(json_new: dict, old_json: dict, diff_list: list[str]) -> dict:
     result = {}
-    path = []
+
     for key in diff_list:
         new_value = search(json_new, key)
         old_value = search(json_old, key)
         if not new_value == old_value:
             result[key] = new_value
+
     return result
 
 
